@@ -1,0 +1,22 @@
+﻿<ng-content></ng-content>
+
+<div class="ctrls-wrapper">
+	<ng-container *ngIf="!streetViewShown">
+		<div class="zoom-ctrl">
+			<button title="Zoom ind" [class.active]="zoomInClicked" (mousedown)="zoomInClicked = true" (mouseup)="zoomInClicked = false" (click)="handleZoomCtrlClick(true)">+</button>
+			<button title="Zoom ud" [class.active]="zoomOutClicked" (mousedown)="zoomOutClicked = true" (mouseup)="zoomOutClicked = false" (click)="handleZoomCtrlClick(false)">&#8211;</button>
+		</div>
+		<div class="view-ctrl">
+			<button title="Vælg anden kortvisning" [class.active]="changeViewShown" (click)="toggleChangeViewCtrl()">
+				<i class="icon-map-layer"></i>
+			</button>
+			<div *ngIf="changeViewShown" class="view-options">
+				<ul>
+					<li [class.active]="viewScheme == 'normal.day'" (click)="changeView('base', 'normal.day')">Kortvisning</li>
+					<li [class.active]="viewScheme == 'hybrid.day'" (click)="changeView('aerial', 'hybrid.day')">Satellit</li>
+					<li [class.active]="viewScheme == 'terrain.day'" (click)="changeView('aerial', 'terrain.day')">Terræn</li>
+				</ul>
+			</div>
+		</div>
+	</ng-container>
+</div>
